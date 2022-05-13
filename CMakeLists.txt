@@ -83,6 +83,9 @@ if (MSVC)
 elseif (APPLE AND CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64")
   # Apple M1 compatibility
   set(NANOGUI_NATIVE_FLAGS_DEFAULT "-mcpu=apple-a12")
+elseif(UNIX AND CMAKE_SYSTEM_PROCESSOR MATCHES "arm")
+  # RPi compatibility
+  set(NANOGUI_NATIVE_FLAGS_DEFAULT "-march=native")
 else()
   set(NANOGUI_NATIVE_FLAGS_DEFAULT "-march=nehalem")
 endif()
